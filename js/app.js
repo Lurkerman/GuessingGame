@@ -6,9 +6,18 @@ var lowOrHi = document.querySelector('.lowOrHi');
 
 var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
+var wins = document.querySelector('.wins');
+
+var playGame = document.querySelector(".playGame");
+var showScore = document.querySelector(".showScore");
 
 var guessCount = 1;
-var resetButton;
+var winCount = 0;
+var resetButton = document.querySelector(".newGame");
+
+resetButton.addEventListener("click", resetGame);
+
+wins.textContent = winCount;
 
 function checkGuess() {
     var userGuess = Number(guessField.value);
@@ -21,6 +30,8 @@ function checkGuess() {
         lastResult.textContent = 'Congratulations! You got it right!';
         lastResult.style.backgroundColor = 'green';
         lowOrHi.textContent = '';
+        winCount++;
+        wins.textContent = winCount;
         setGameOver();
     } else if (guessCount === 10) {
         lastResult.textContent = '!!!GAME OVER!!!';
@@ -43,26 +54,20 @@ function checkGuess() {
 guessSubmit.addEventListener('click', checkGuess);
 
 function setGameOver() {
-  guessField.disabled = true;
-  guessSubmit.disabled = true;
-  resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game';
-  document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', resetGame);
+    playGame.style.display = "none";
+    showScore.style.display = "inherit";
 }
 
 function resetGame() {
   guessCount = 1;
 
-  var resetParas = document.querySelectorAll('.resultParas p');
-  for (var i = 0 ; i < resetParas.length ; i++) {
-    resetParas[i].textContent = '';
+  var reset = document.querySelectorAll('.results p');
+  for (var i = 0 ; i < reset.length ; i++) {
+    reset[i].textContent = '';
   }
 
-  resetButton.parentNode.removeChild(resetButton);
-
-  guessField.disabled = false;
-  guessSubmit.disabled = false;
+    playGame.style.display = "inherit";
+    showScore.style.display = "none";
   guessField.value = '';
   guessField.focus();
 

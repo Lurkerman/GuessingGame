@@ -1,11 +1,37 @@
+/* Base Styles*/
+
 body {
-    width: 50%;
-    max-width: 800px;
-    min-width: 480px;
+    width: 90%;
     margin: 0 auto;
 }
 
 .lastResult {
     color: white;
     padding: 3px;
+}
+
+.showScore {
+    display: none;
+}
+
+/* Responsive section */
+.col1 {
+    width: 100%;
+    float: left;
+}
+
+.col2 {
+    width: 100%;
+    float: left;
+}
+
+@media (min-width: 800px) {
+    .col1 {
+        width: 45%;
+    }
+
+    .col2 {
+        float:right;
+        width: 45%;
+    }
 }
