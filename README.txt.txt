@@ -1,0 +1,3 @@
+This is a guessing game that I found the skeleton for online through the following link: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash.
+
+I really wanted to work with a simple guessing game and try to mess around and make it fit my vision, but wasn't entirely sure where to start.  Rather than trying to reinvent the wheel, I decided to work through this project, understand the code, and then attempt to change it to fit the project syllabus and my own interests.
