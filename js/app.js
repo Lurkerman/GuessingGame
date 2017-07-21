@@ -26,16 +26,18 @@ function checkGuess() {
 
 //The adding variable is used to hold an entire paragraph, which must be finished later in the checkGuess function.
     var adding = "<p class='tracking'>Guess " + guessCount + ": " + userGuess;
- 
+
+//This if statement checks to see how the user's guess compares to target. 
     if (userGuess === randomNumber) {
-        adding += "</p>";
+        adding += ", which was correct!</p>";
         guesses.innerHTML += adding;
         winCount++;
         wins.textContent = winCount;
         outcome.textContent = "You won!  Congratulations!";
         setGameOver();
     } else if (guessCount === 10) {
-        adding += "</p>";
+        adding += ", which was your last guess.</p>";
+        outcome.textContent = "You lost.  Feel free to try again!"
         guesses.innerHTML += adding;
         setGameOver();
     } else {
