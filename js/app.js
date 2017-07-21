@@ -8,6 +8,7 @@ var guessSubmit = document.querySelector('.guessSubmit');
 var guessField = document.querySelector('.guessField');
 var wins = document.querySelector('.wins');
 
+var outcome = document.querySelector(".outcome");
 var playGame = document.querySelector(".playGame");
 var showScore = document.querySelector(".showScore");
 
@@ -16,62 +17,60 @@ var winCount = 0;
 var resetButton = document.querySelector(".newGame");
 
 resetButton.addEventListener("click", resetGame);
+guessSubmit.addEventListener('click', checkGuess);
 
 wins.textContent = winCount;
 
 function checkGuess() {
     var userGuess = Number(guessField.value);
-    if (guessCount === 1) {
-        guesses.textContent = 'Previous guesses: ';
-    }
-    guesses.textContent += userGuess + ' ';
+
+//The adding variable is used to hold an entire paragraph, which must be finished later in the checkGuess function.
+    var adding = "<p class='tracking'>Guess " + guessCount + ": " + userGuess;
  
     if (userGuess === randomNumber) {
-        lastResult.textContent = 'Congratulations! You got it right!';
-        lastResult.style.backgroundColor = 'green';
-        lowOrHi.textContent = '';
+        adding += "</p>";
+        guesses.innerHTML += adding;
         winCount++;
         wins.textContent = winCount;
+        outcome.textContent = "You won!  Congratulations!";
         setGameOver();
     } else if (guessCount === 10) {
-        lastResult.textContent = '!!!GAME OVER!!!';
+        adding += "</p>";
+        guesses.innerHTML += adding;
         setGameOver();
     } else {
-        lastResult.textContent = 'Wrong!';
-        lastResult.style.backgroundColor = 'red';
-    }
-    if(userGuess < randomNumber) {
-        lowOrHi.textContent = 'Last guess was too low!';
-    } else if(userGuess > randomNumber) {
-        lowOrHi.textContent = 'Last guess was too high!';
+        if(userGuess < randomNumber) {
+           adding += ", which is too low.</p>";
+           guesses.innerHTML += adding;
+        } else if(userGuess > randomNumber) {
+            adding += ", which is too high.</p>";
+            guesses.innerHTML += adding;
+        }
     }
  
   guessCount++;
   guessField.value = '';
-  guessField.focus();;
+  guessField.focus();
 }
 
-guessSubmit.addEventListener('click', checkGuess);
-
+//This function switches the format of the left column.  The originally visible format is to allow user input.  showScore shows your score and allows you to reset the game.
 function setGameOver() {
     playGame.style.display = "none";
     showScore.style.display = "inherit";
 }
 
 function resetGame() {
-  guessCount = 1;
+    guessCount = 1;
 
-  var reset = document.querySelectorAll('.results p');
+    //This will wipe all the paragraphs formed in the checkGuess function.
+    var reset = document.querySelectorAll('.results p');
   for (var i = 0 ; i < reset.length ; i++) {
     reset[i].textContent = '';
   }
-
     playGame.style.display = "inherit";
     showScore.style.display = "none";
-  guessField.value = '';
-  guessField.focus();
+    guessField.value = '';
+    guessField.focus();
 
-  lastResult.style.backgroundColor = 'white';
-
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+    randomNumber = Math.floor(Math.random() * 100) + 1;
 }

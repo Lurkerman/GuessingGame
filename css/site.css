@@ -1,32 +1,70 @@
 /* Base Styles*/
 
 body {
-    width: 90%;
     margin: 0 auto;
+    background-color: #E9D985;
 }
 
-.lastResult {
-    color: white;
-    padding: 3px;
+h1, h2 {
+    text-align: center;
+    color: #6A5D7B;
 }
 
 .showScore {
     display: none;
 }
 
+/* Heading */
+
+h1 {
+    background-color: #B2BD7E;
+    margin: 0;
+    padding: 0.8em;
+}
+
+/* Input Section */
+
+.inputSection {
+    color: #5d4A66;
+}
+
+/* Tracking Section */
+
+.tracking {
+    color: #5d4A66;
+    font-size: 0.9em;
+}
+
+/* Buttons */
+.guessSubmit, .newGame {
+    color: #749C75;
+    background-color: #6A5D7B;
+    border: none;
+}
+
+.guessSubmit:hover, .newGame:hover {
+    color: #B2BD7E;
+    background-color: #5d4A66;
+}
+
 /* Responsive section */
 .col1 {
-    width: 100%;
-    float: left;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
 }
 
 .col2 {
-    width: 100%;
-    float: left;
+    width: 90%;
 }
 
 @media (min-width: 800px) {
+    body {
+        font-size: 1.3em;
+    }
+    
     .col1 {
+        float: left;
         width: 45%;
     }
 

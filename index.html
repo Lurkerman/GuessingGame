@@ -8,28 +8,31 @@
     </head>
 
     <body>
-        <h1>Number guessing game</h1>
+        <h1>From One To One Hundred</h1>
+        <!-- The container class is not currently being used, but may in the future -->
+        <div class="container">
+            <div class="col1">
+                <div class="playGame">
+                    <p class="inputSection">Your task is to guess a number that has been randomly selected from between 1 and 100.  Don't worry, you'll have hints.</p>
 
-        <div class="col1">
-            <div class="playGame">
-                <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
-
-                <div class="form">
-                    <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
-                    <input type="submit" value="Submit guess" class="guessSubmit">
+                    <!-- User input section -->
+                    <div class="form">
+                        <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+                        <input type="submit" value="Submit guess" class="guessSubmit">
+                    </div>
+                </div>
+                <div class="showScore">
+                    <p class="outcome"></p>
+                    <p class="inputSection">Number of wins since loading this page: <span class="wins"></span></p>
+                    <button class="newGame">Start New Game</button>
                 </div>
             </div>
-            <div class="showScore">
-                <p class="">Congratulations!  You won!</p>
-                <p>You have won <span class="wins"></span> times since loading this page!</p>
-                <button class="newGame">Start New Game</button>
-            </div>
-        </div>
 
-        <div class="results col2">
-            <p class="guesses"></p>
-            <p class="lastResult"></p>
-            <p class="lowOrHi"></p>
+            <div class="results col2">
+                <h2>Your Previous Guesses</h2>
+                <div class="guesses"></div>
+                <p class="lastResult"></p>
+            </div>
         </div>
 
     <script src="js/app.js" type="text/javascript"></script>
